@@ -1,83 +1,68 @@
 Crypto Market Insights Dashboard
 
-An interactive cryptocurrency analytics dashboard built using Python and Streamlit that provides real-time market insights.
+An interactive cryptocurrency analytics dashboard built using Python and Streamlit that delivers real-time and historical market insights through quantitative analysis and intuitive visualizations.
 
 Features
+Live and historical cryptocurrency price analysis
+Interactive candlestick and volume charts.
+Key market metrics including price, volume, and daily range.
+Quantitative analytics such as price spread, Z-score, and rolling correlation.
+Z-score–based alert system to detect abnormal price movements.
 
-Live and historical crypto price analysis
-
-Interactive candlestick and volume charts
-
-Key market metrics: price, volume, daily range
-
-Quantitative analytics: spread, Z-score, rolling correlation
-
-Z-score based alert system for abnormal price movement
-
-Export analytics data as CSV
+Export analytical data as CSV for offline analysis
 
 Tech Stack
-
 Python
-
 Streamlit
-
 Plotly
-
 Pandas, NumPy
-
 Coinbase Exchange API
 
-Architecture Overview
 
-Frontend: Streamlit UI for user interaction and visualization
-
-Data Source: Coinbase API for real-time and historical OHLCV data
-
-Processing Layer: Data resampling, indicator calculation, quant analytics
-
-Visualization: Interactive Plotly charts
-
-Alerts & Export: Threshold-based alerts and CSV download
+Frontend: Streamlit-based user interface for interaction and visualization
+Data Source: Coinbase Exchange API for real-time and historical OHLCV data
+Processing Layer: Data resampling, indicator computation, and quantitative analytics
+Visualization Layer: Interactive Plotly charts for market trends and metrics
+Alerts & Export: Threshold-based alerts and downloadable analytics data
 
 How to Run the Project
 
-Clone the repository:
+Clone the repository
 
 git clone https://github.com/your-username/crypto-market-insights-dashboard.git
 
 
-Navigate to the project folder:
+Navigate to the project directory
 
 cd crypto-market-insights-dashboard
 
 
-Install dependencies:
+Install dependencies
 
 pip install -r requirements.txt
 
 
-Run the Streamlit app:
+Run the Streamlit application
 
 python -m streamlit run app.py
 
 
-Open the browser link shown in the terminal to view the dashboard.
+Open the browser link displayed in the terminal to access the dashboard.
 
 Usage
 
-Select trading pair, timeframe, and sampling interval from the sidebar
+Select the trading pair, timeframe, and sampling interval from the sidebar
 
-Monitor real-time metrics and price movements
+Monitor real-time price movements and market metrics
 
-Use the Z-score slider to trigger anomaly alerts
+Adjust the Z-score threshold to trigger anomaly alerts
 
-Download analytics data for offline analysis
+Download analytics data for further offline analysis
 
 Project Highlights
 
 End-to-end data pipeline from API ingestion to visualization
 
-Real-time analytics with user-driven controls
+Real-time quantitative analysis with user-controlled parameters
 
-Clean UI inspired by financial market dashboards
+Clean and intuitive UI inspired by financial market dashboards
