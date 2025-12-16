@@ -1,68 +1,201 @@
 Crypto Market Insights Dashboard
 
-An interactive cryptocurrency analytics dashboard built using Python and Streamlit that delivers real-time and historical market insights through quantitative analysis and intuitive visualizations.
+The MarketLens Quant Analytics Dashboard is a real-time cryptocurrency market analytics tool designed to help traders and researchers monitor price behavior, statistical signals, and short-term market dynamics.
 
-Features
-Live and historical cryptocurrency price analysis
-Interactive candlestick and volume charts.
-Key market metrics including price, volume, and daily range.
-Quantitative analytics such as price spread, Z-score, and rolling correlation.
-Z-score–based alert system to detect abnormal price movements.
+The dashboard focuses on quantitative analytics, statistical indicators, and alerting, rather than price prediction, making it suitable for exploratory analysis, signal generation, and research workflows.
 
-Export analytical data as CSV for offline analysis
+🚀 Features 📈 Market Visualization
 
-Tech Stack
-Python
-Streamlit
-Plotly
-Pandas, NumPy
-Coinbase Exchange API
+Candlestick Chart showing OHLC (Open, High, Low, Close) prices
 
+Volume Bars aligned with price action
 
-Frontend: Streamlit-based user interface for interaction and visualization
-Data Source: Coinbase Exchange API for real-time and historical OHLCV data
-Processing Layer: Data resampling, indicator computation, and quantitative analytics
-Visualization Layer: Interactive Plotly charts for market trends and metrics
-Alerts & Export: Threshold-based alerts and downloadable analytics data
+Interactive charts with zoom, pan, and hover support
 
-How to Run the Project
+⏱️ Timeframe & Sampling Control
 
-Clone the repository
+Timeframe Selection:
 
-git clone https://github.com/your-username/crypto-market-insights-dashboard.git
+Last 24 Hours
 
+Last 3 Days
 
-Navigate to the project directory
+Last Week
 
-cd crypto-market-insights-dashboard
+Last Month
 
+Sampling / Resampling Options:
 
-Install dependencies
+Raw (original data)
 
-pip install -r requirements.txt
+1 Minute
 
+5 Minutes
 
-Run the Streamlit application
+This separation allows flexible analysis across different historical spans and resolutions.
 
-python -m streamlit run app.py
+📊 Quantitative Analytics
 
+Spread
 
-Open the browser link displayed in the terminal to access the dashboard.
+Measures short-term price deviation using lagged prices
 
-Usage
+Z-Score
 
-Select the trading pair, timeframe, and sampling interval from the sidebar
+Standardizes spread values to identify statistically significant deviations
 
-Monitor real-time price movements and market metrics
+Rolling Correlation
 
-Adjust the Z-score threshold to trigger anomaly alerts
+Tracks short-term dependency between consecutive price movements
 
-Download analytics data for further offline analysis
+🚨 Alerting
 
-Project Highlights
+Z-Score Threshold Alerts
 
-End-to-end data pipeline from API ingestion to visualization
+User-defined threshold
 
-Real-time quantitative analysis with user-controlled parameters
+Alert triggered when |Z| > threshold
 
-Clean and intuitive UI inspired by financial market dashboards
+Useful for mean-reversion and anomaly detection
+
+📁 Data Export
+
+Download processed data (prices + analytics) as CSV
+
+Enables offline analysis and research
+
+🧱 Project Structure project-folder/ ├── app.py # Streamlit dashboard (frontend + backend logic) ├── README.md # Project documentation
+
+🛠️ Tech Stack
+
+Language: Python
+
+Frontend & Backend: Streamlit
+
+Data Source: Coinbase Exchange REST API
+
+Data Processing: Pandas, NumPy
+
+Visualization: Plotly
+
+HTTP Requests: Requests
+
+🔄 Data Flow & Methodology 1️⃣ Data Ingestion
+
+Historical OHLCV data and latest ticker prices are fetched from the Coinbase Exchange REST API
+
+No authentication or API keys required
+
+2️⃣ Sampling / Resampling
+
+Raw market data can be resampled to:
+
+1-minute
+
+5-minute intervals
+
+Aggregation logic:
+
+Open → first value
+
+High → max
+
+Low → min
+
+Close → last
+
+Volume → sum
+
+3️⃣ Quantitative Analytics 🔹 Spread Spread = Price(t) − Price(t−1)
+
+Captures short-term deviations useful for statistical monitoring.
+
+🔹 Z-Score Z = (Spread − Rolling Mean) / Rolling Standard Deviation
+
+Used to detect statistically extreme price movements.
+
+🔹 Rolling Correlation
+
+Measures correlation between current price and its lagged version
+
+Helps identify regime changes or weakening trends
+
+4️⃣ Alerting Logic
+
+User defines a Z-score threshold
+
+Alert is triggered when:
+
+|Z| > Threshold
+
+5️⃣ Visualization
+
+Candlestick + volume charts
+
+Z-score and correlation plots
+
+Fully interactive using Plotly
+
+▶️ How to Run the Application
+
+Install Dependencies pip install streamlit pandas plotly requests numpy
+
+Run the App python -m streamlit run app.py
+
+The dashboard will open at:
+
+http://localhost:8501
+
+🧠 Design Philosophy
+
+Modular separation between:
+
+Data ingestion
+
+Sampling
+
+Analytics
+
+Visualization
+
+Designed for extensibility:
+
+REST → WebSocket upgrade possible
+
+New analytics can be added easily
+
+Focus on clarity over complexity
+
+An architecture diagram will be added in a future update.
+
+🤖 ChatGPT Usage Transparency
+
+ChatGPT was used as a development assistant for:
+
+Structuring the application architecture
+
+Generating and refining Python code
+
+Validating analytics logic
+
+Improving documentation clarity
+
+All final implementation, testing, and decisions were performed by the author.
+
+🔮 Future Enhancements
+
+WebSocket-based tick data ingestion
+
+Multi-asset pair analytics
+
+ADF stationarity testing
+
+Kalman filter-based hedge ratio
+
+Mean-reversion backtesting module
+
+Persistent storage using Redis or PostgreSQL
+
+⚠️ Disclaimer
+
+This project is intended for educational and research demonstration purposes only and does not constitute financial or investment advice.
